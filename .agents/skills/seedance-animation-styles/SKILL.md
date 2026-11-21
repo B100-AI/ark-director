@@ -1,12 +1,6 @@
 ---
 name: seedance-animation-styles
-description: >
-  Write Seedance animation prompts for claymation, needle felt, wood puppets,
-  toy miniatures, vintage rubber hose, painterly 2D, cubist ink, stylized 3D,
-  silicone creatures, wax crayon, and custom animation media. Use whenever the
-  user asks for a Seedance animation style, a stylized animated short, an
-  animated scene in a named medium, or a prompt that must preserve handcrafted
-  texture and material-specific motion.
+description: "Write Seedance animation prompts for claymation, needle felt, wood puppets, toy miniatures, vintage rubber hose, painterly 2D, cubist ink, stylized 3D, silicone creatures, wax crayon, and custom animation media. Use whenever the user asks for a Seedance animation style, a stylized animated short, an animated scene in a named medium, or a prompt that must preserve handcrafted texture and material-specific motion.\n"
 ---
 
 # Seedance Animation Styles

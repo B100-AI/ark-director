@@ -1,20 +1,6 @@
 ---
 name: omnihuman-prompt-20
-description: >-
-  Write and refine the optional text prompt for OmniHuman 2.0 (BytePlus Vision
-  AI), the lip-sync digital-human video model driven by one image plus one
-  audio track. Use when a character in a photo or illustration must talk, sing
-  or react to supplied audio and the prompt should direct camera moves,
-  emotion arcs, ordered gestures and actions, which person speaks in a group
-  shot, focus pulls, background events, environment interaction, or added
-  props and effects; also for animals, mascots and stylized or pixel
-  characters. Covers input checks (image limits, 4-300 s audio, supported
-  prompt languages), the camera + emotion + speaking state + actions +
-  background template, splitting long audio into stable segments, and
-  symptom-based fixes such as a mouth that does not move, identity drift or an
-  ignored camera move. Prompt and input preparation only; it does not sign or
-  submit API requests. Not for Seedance video prompts, voice or music
-  generation, or lip-syncing existing footage.
+description: Write and refine the optional text prompt for OmniHuman 2.0 (BytePlus Vision AI), the lip-sync digital-human video model driven by one image plus one audio track. Use when a character in a photo or illustration must talk, sing or react to supplied audio and the prompt should direct camera moves, emotion arcs, ordered gestures and actions, which person speaks in a group shot, focus pulls, background events, environment interaction, or added props and effects; also for animals, mascots and stylized or pixel characters. Covers input checks (image limits, 4-300 s audio, supported prompt languages), the camera + emotion + speaking state + actions + background template, splitting long audio into stable segments, and symptom-based fixes such as a mouth that does not move, identity drift or an ignored camera move. Prompt and input preparation only; it does not sign or submit API requests. Not for Seedance video prompts, voice or music generation, or lip-syncing existing footage.
 ---
 
 # OmniHuman 2.0 Prompting
@@ -193,3 +179,13 @@ Use only images and voices the user is entitled to use. A real person's face
 or voice needs that person's consent, which a creative request does not
 imply. Error `50510` means the content pre-filter rejected the inputs: report
 it and revise the inputs or intent rather than retrying unchanged.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

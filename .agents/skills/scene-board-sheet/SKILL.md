@@ -1,16 +1,6 @@
 ---
 name: scene-board-sheet
-description: >-
-  Assemble and time a scene's storyboard from existing sketch panels. Derives the
-  scene board record from the shot plan at a per-scene level (L1, L2 or L3, L2 by
-  default), validates it, registers generated and edited panel files with lineage,
-  plans panel-only repairs so only failed panels are edited, and builds annotated
-  sheet pages, a floor-plan overview, a timed animatic and a static review page.
-  Use for scene-based storyboards that must be granular and detailed, scene board
-  review sheets, animatics, stale-board checks after a shot plan or panel change,
-  and repair planning for failed panels. Planning and assembly only: it never
-  generates images or produces a Seedance reference, and the only approval it records
-  is a panel's scope as the input of a repair edit.
+description: 'Assemble and time a scene''s storyboard from existing sketch panels. Derives the scene board record from the shot plan at a per-scene level (L1, L2 or L3, L2 by default), validates it, registers generated and edited panel files with lineage, plans panel-only repairs so only failed panels are edited, and builds annotated sheet pages, a floor-plan overview, a timed animatic and a static review page. Use for scene-based storyboards that must be granular and detailed, scene board review sheets, animatics, stale-board checks after a shot plan or panel change, and repair planning for failed panels. Planning and assembly only: it never generates images or produces a Seedance reference, and the only approval it records is a panel''s scope as the input of a repair edit.'
 ---
 
 # Scene Board Sheet
@@ -90,7 +80,7 @@ Output under `scenes/scene-NN/`:
 | `board/repair/<panel>_edit_vNN.md` | Revision contract for one edit |
 | `<project>/review/scene-NN-board.html` | Static review page |
 
-The schema is `.agents/contracts/schemas/scene-board.schema.json`. Derived files are
+The schema is `${CLAUDE_PLUGIN_ROOT}/contracts/schemas/scene-board.schema.json`. Derived files are
 rebuilt, never hand-edited, and carry source hashes.
 
 ## Commands

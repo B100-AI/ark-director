@@ -97,7 +97,7 @@ Review is bound to the request hash, so the order is hash first.
    and `index.html`):
 
    ```bash
-   uv run python .agents/scripts/prepare_request.py \
+   uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/prepare_request.py \
      --project projects/<name> --asset s01_sh010_t01_v01 \
      --prompt scenes/scene-01/s01_sh010/prompt_s01_sh010_t01_v01.md \
      --model dreamina-seedance-2-5-260628 --operation generate \

@@ -1,19 +1,6 @@
 ---
 name: seedance-restyle
-description: >-
-  Write Seedance 2.5 Restyle prompts that redraw an entire existing clip in a
-  new visual style (2D cel anime, watercolor, claymation, needle felt, toy
-  miniature, stylized 3D, pixel art, woodblock, film noir and 20+ more, or a
-  custom style reference image) while keeping its performance, subject
-  positions, motion, camera path, cuts and timing. Covers the style catalog, the
-  style-only reference role, medium-matched Virtual Portrait identity anchors,
-  an environment-image recipe that restyles the background while keeping the
-  same place, edit and reference routes, a muted source master with audio added
-  in post, a 480p test ladder, and restyle QA. Use to turn live
-  action into animation, change the medium of an animated clip, or match a
-  house style. Not for replacing the cast or world (seedance-motion-recast),
-  swapping one element (seedance-object-swap), grading or relighting the
-  original look (seedance-vfx-prompt), or task submission.
+description: Write Seedance 2.5 Restyle prompts that redraw an entire existing clip in a new visual style (2D cel anime, watercolor, claymation, needle felt, toy miniature, stylized 3D, pixel art, woodblock, film noir and 20+ more, or a custom style reference image) while keeping its performance, subject positions, motion, camera path, cuts and timing. Covers the style catalog, the style-only reference role, medium-matched Virtual Portrait identity anchors, an environment-image recipe that restyles the background while keeping the same place, edit and reference routes, a muted source master with audio added in post, a 480p test ladder, and restyle QA. Use to turn live action into animation, change the medium of an animated clip, or match a house style. Not for replacing the cast or world (seedance-motion-recast), swapping one element (seedance-object-swap), grading or relighting the original look (seedance-vfx-prompt), or task submission.
 ---
 
 # Seedance Restyle
@@ -186,3 +173,13 @@ in the
 - [ ] Source text disposition stated; no new copy requested
 - [ ] Verified route and ladder rung stated; any probe addresses a current need
 - [ ] Post-audio route recorded
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

@@ -1,16 +1,6 @@
 ---
 name: seedance-restoration
-description: >
-  Write Seedance 2.5 video-to-video restoration prompts that remove film grain,
-  video noise, black and white scratch lines, vertical and horizontal scratches,
-  hairlines, streaks, dust, dirt, flicker, and compression artifacts from aged,
-  damaged, or archival footage while preserving every person, object, action,
-  composition, camera movement, and timing. Use whenever the user asks to
-  restore, clean, denoise, or repair old, aged, or archival footage, remove
-  grain or noise, erase scratch lines or film damage, or "clean up" damaged
-  film through the Seedance generative-edit route. Composes the prompt and
-  specifies the diagnosis and verification steps; the caller owns submission and
-  the generation lifecycle.
+description: "Write Seedance 2.5 video-to-video restoration prompts that remove film grain, video noise, black and white scratch lines, vertical and horizontal scratches, hairlines, streaks, dust, dirt, flicker, and compression artifacts from aged, damaged, or archival footage while preserving every person, object, action, composition, camera movement, and timing. Use whenever the user asks to restore, clean, denoise, or repair old, aged, or archival footage, remove grain or noise, erase scratch lines or film damage, or \"clean up\" damaged film through the Seedance generative-edit route. Composes the prompt and specifies the diagnosis and verification steps; the caller owns submission and the generation lifecycle.\n"
 ---
 
 # Seedance Restoration
@@ -281,3 +271,13 @@ Silent output. Sound is added in post.
     content intact, no new artifacts) before splicing.
 14. The caller's prompt review passed before submission; the saved original
     audio was muxed after.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

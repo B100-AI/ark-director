@@ -1,11 +1,6 @@
 ---
 name: ugc-ad-modes
-description: >
-  Write Seedance video ad prompts for nine UGC, demonstration, review, showcase,
-  broadcast, experimental, and try-on modes. Ground hooks in supplied product
-  facts, audience objections, and the requested CTA; develop distinct persuasive
-  angles with coherent visual direction. Use for branded video prompts and
-  scoped revisions. Does not generate media or invoke other skills.
+description: "Write Seedance video ad prompts for nine UGC, demonstration, review, showcase, broadcast, experimental, and try-on modes. Ground hooks in supplied product facts, audience objections, and the requested CTA; develop distinct persuasive angles with coherent visual direction. Use for branded video prompts and scoped revisions. Does not generate media or invoke other skills.\n"
 ---
 
 # UGC Ad Modes
@@ -232,3 +227,32 @@ hypothetical editorial diagnoses, not observed campaign or generated-media resul
 - Measured or native-language-informed delivery fits with onset, pauses and tail; counts, unreferenced
   props and hands follow section 5.
 - A scoped revision preserves unrelated decisions; no recommendation becomes approval.
+- **Compliance gate (mandatory, final step):** Before delivering, invoke the `tiktok-shop-compliance` skill (or run its scanner on the draft: `python3 "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug> draft.txt`), fix every BLOCK finding, and append a one-line compliance note.
+
+## Compliance gate (mandatory final step)
+
+Before delivering, invoke the `tiktok-shop-compliance` skill (or run its bundled
+scanner on the draft), fix every BLOCK finding, and append a one-line compliance
+note.
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug> draft.txt
+# or pipe text: echo "your caption here" | python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug>
+# use python3 instead of python on macOS/Linux
+# <brand-slug>: the brand profile (pao-express, vibrant-hotel, …; list with --list-brands) or the campaign's tiktok-profile.json
+```
+
+Applies to every piece of TikTok-bound text this skill emits — captions, titles,
+on-screen text, scripts, VO and dialogue lines, listings, bios, and replies.
+Never deliver, hand off, or schedule copy while a BLOCK finding remains, and
+never call it "TikTok-ready" until the scanner exits 0.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

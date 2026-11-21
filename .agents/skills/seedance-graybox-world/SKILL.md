@@ -1,17 +1,6 @@
 ---
 name: seedance-graybox-world
-description: >
-  Write Seedance 2.5 prompts for the Blender gray look — an untextured gray
-  graybox / blockout 3D world with matcap-style shading, ambient-occlusion
-  depth, a neutral gray viewport background, and clean mechanical motion, like
-  Blender's Solid viewport or Material Preview on default gray materials. Use
-  whenever the user asks for a "Blender-like world", "gray world", graybox,
-  blockout, untextured 3D, previs or previz look, whitebox, layout pass,
-  matcap gray, neutral gray studio, or a video that must look like a default
-  Blender viewport render — even if they never say "graybox". Use only when
-  gray IS the desired final look; when the user wants a coarse or fine
-  blockout reference to re-render into final materials, use
-  seedance-prompt-25's blockout-reference mode instead.
+description: "Write Seedance 2.5 prompts for the Blender gray look — an untextured gray graybox / blockout 3D world with matcap-style shading, ambient-occlusion depth, a neutral gray viewport background, and clean mechanical motion, like Blender's Solid viewport or Material Preview on default gray materials. Use whenever the user asks for a \"Blender-like world\", \"gray world\", graybox, blockout, untextured 3D, previs or previz look, whitebox, layout pass, matcap gray, neutral gray studio, or a video that must look like a default Blender viewport render — even if they never say \"graybox\". Use only when gray IS the desired final look; when the user wants a coarse or fine blockout reference to re-render into final materials, use seedance-prompt-25's blockout-reference mode instead.\n"
 ---
 
 # Seedance Graybox World
@@ -408,3 +397,13 @@ Before returning the prompt, verify:
 13. Any reaction is a whole-body pivot, not a head-only turn; head motion is bound to a fixed neck-joint angle.
 14. Architectural orientation and travel invariants are repeated in the Scene and in every stage, not stated once.
 15. For chase/action scenes, the camera prescribes per-cut moves and shot sizes with timestamps aligned to stage boundaries; each beat resolves on a state present at that timestamp.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

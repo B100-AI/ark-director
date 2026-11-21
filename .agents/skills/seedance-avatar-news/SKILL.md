@@ -1,16 +1,6 @@
 ---
 name: seedance-avatar-news
-description: >-
-  Produce a creator-style 9:16 tech/news explainer short hosted by an approved
-  AI avatar: reference-format breakdown, sourced topic research, a hook-driven
-  25–29 s script (about 50–60 words), a Seedance 2.5 talking-head take (built with
-  seedance-ai-avatar), official B-roll acquisition with provenance and usage
-  basis, and a deterministic edit built with scripts/render_short.py that is
-  placed in Studio and rendered (split-screen, full-screen, framed-card layouts, STT-timed caption pills,
-  source and channel badges), plus parallel topic/edit variants in the
-  project's Studio review surface. Use to recreate a TikTok/Reels/Shorts talking-head news
-  format with an avatar, turn a news story into an avatar short, or batch
-  several options of the same show.
+description: 'Produce a creator-style 9:16 tech/news explainer short hosted by an approved AI avatar: reference-format breakdown, sourced topic research, a hook-driven 25–29 s script (about 50–60 words), a Seedance 2.5 talking-head take (built with seedance-ai-avatar), official B-roll acquisition with provenance and usage basis, and a deterministic edit built with scripts/render_short.py that is placed in Studio and rendered (split-screen, full-screen, framed-card layouts, STT-timed caption pills, source and channel badges), plus parallel topic/edit variants in the project''s Studio review surface. Use to recreate a TikTok/Reels/Shorts talking-head news format with an avatar, turn a news story into an avatar short, or batch several options of the same show.'
 ---
 
 # Seedance Avatar News
@@ -113,3 +103,31 @@ exclusive ownership of `options/<x>/` for stages 2–5. Vary the options on
 topic and on edit style, for example a faithful split-screen and a dynamic
 remix. The main agent registers every provider task, reconciles restarts,
 runs final QA, and syncs Studio (pre-Studio canvas: updates the canvas).
+
+## Compliance gate (mandatory final step)
+
+Before delivering, invoke the `tiktok-shop-compliance` skill (or run its bundled
+scanner on the draft), fix every BLOCK finding, and append a one-line compliance
+note.
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug> draft.txt
+# or pipe text: echo "your caption here" | python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug>
+# use python3 instead of python on macOS/Linux
+# <brand-slug>: the brand profile (pao-express, vibrant-hotel, …; list with --list-brands) or the campaign's tiktok-profile.json
+```
+
+Applies to every piece of TikTok-bound text this skill emits — captions, titles,
+on-screen text, scripts, VO and dialogue lines, listings, bios, and replies.
+Never deliver, hand off, or schedule copy while a BLOCK finding remains, and
+never call it "TikTok-ready" until the scanner exits 0.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

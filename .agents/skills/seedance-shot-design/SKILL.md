@@ -1,18 +1,6 @@
 ---
 name: seedance-shot-design
-description: >-
-  Design the shot plan for a Seedance scene before any prompt is written: shot
-  count and duration, the job of each shot, size, framing (single, two-shot,
-  group, over-the-shoulder, over-the-hip, point of view, insert), angle, camera
-  move, lens intent, named light sources and key side, the contrast between
-  neighboring shots, and a variety check (V1-V10) at a chosen energy level
-  (restrained, standard, kinetic). Use for narrative, ad, micro-drama,
-  music-video and showcase clips when camera and light are not already locked,
-  when a scene reads flat or static, or when the user asks for a shot list,
-  coverage, shot framing, or more dynamic camera work and lighting. Returns a
-  shot plan record and the per-shot facts a Seedance 2.5 prompt carries. Not
-  for static assets, source-preserving edits (object swap, restyle, recast), or
-  task submission.
+description: 'Design the shot plan for a Seedance scene before any prompt is written: shot count and duration, the job of each shot, size, framing (single, two-shot, group, over-the-shoulder, over-the-hip, point of view, insert), angle, camera move, lens intent, named light sources and key side, the contrast between neighboring shots, and a variety check (V1-V10) at a chosen energy level (restrained, standard, kinetic). Use for narrative, ad, micro-drama, music-video and showcase clips when camera and light are not already locked, when a scene reads flat or static, or when the user asks for a shot list, coverage, shot framing, or more dynamic camera work and lighting. Returns a shot plan record and the per-shot facts a Seedance 2.5 prompt carries. Not for static assets, source-preserving edits (object swap, restyle, recast), or task submission.'
 ---
 
 # Seedance Shot Design
@@ -240,3 +228,13 @@ Before returning a plan, confirm:
 
 Worked cases are hypothetical teaching repairs in
 [worked repairs](references/worked-repairs.md).
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

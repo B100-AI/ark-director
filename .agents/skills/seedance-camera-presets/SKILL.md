@@ -1,20 +1,6 @@
 ---
 name: seedance-camera-presets
-description: >
-  Turn a named camera move or preset — dolly, pan, tilt, orbit, crane, jib,
-  tracking, handheld, FPV, aerial, bullet time, dolly zoom, crash zoom, whip
-  pan, optical zoom, Dutch angle, one-take, or static — or a shot framing
-  (single, two-shot, over-the-shoulder, over-the-hip, point of view, insert) —
-  into a canonical, drop-in Camera block for the Seedance 2.5 six-part prompt
-  formula.
-  Use when the user asks for a camera
-  preset, camera movement style, shot framing, or a shot's camera treatment,
-  and when a shot plan names a move or framing to word.
-  Bullet time here is the camera-orbit technique (freeze + orbit); speed-ramp
-  and slow-mo timing belong to seedance-pacing-presets. One-take here is the
-  pass-through camera path; single-shot no-cuts pacing belongs to
-  seedance-pacing-presets. Lens and focal-length optics belong to
-  seedance-lens-presets.
+description: "Turn a named camera move or preset — dolly, pan, tilt, orbit, crane, jib, tracking, handheld, FPV, aerial, bullet time, dolly zoom, crash zoom, whip pan, optical zoom, Dutch angle, one-take, or static — or a shot framing (single, two-shot, over-the-shoulder, over-the-hip, point of view, insert) — into a canonical, drop-in Camera block for the Seedance 2.5 six-part prompt formula. Use when the user asks for a camera preset, camera movement style, shot framing, or a shot's camera treatment, and when a shot plan names a move or framing to word. Bullet time here is the camera-orbit technique (freeze + orbit); speed-ramp and slow-mo timing belong to seedance-pacing-presets. One-take here is the pass-through camera path; single-shot no-cuts pacing belongs to seedance-pacing-presets. Lens and focal-length optics belong to seedance-lens-presets.\n"
 ---
 
 # Seedance Camera Presets

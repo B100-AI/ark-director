@@ -1,18 +1,6 @@
 ---
 name: seedance-object-swap
-description: >-
-  Write Seedance 2.5 Object Swap prompts that replace one named element in
-  existing footage (a character, outfit, product, prop or object, or the
-  location behind the subjects) and preserve everything else as filmed:
-  performance, camera path, cuts, lighting and event order. Covers the
-  five-part swap contract (identification, object count, Timeline Inheritance,
-  residual-original guard, preservation), contact and occlusion windows,
-  Virtual Portrait asset:// references for character swaps, a muted source
-  master with audio added in post, and swap QA. Use for product placement,
-  competitor-to-own SKU swaps, wardrobe changes, single-character replacement
-  or location swaps on a kept take. Not for rebuilding the whole cast or world
-  around the source motion (seedance-motion-recast), whole-frame style changes
-  (seedance-restyle), new T2V/I2V shots, or task submission.
+description: 'Write Seedance 2.5 Object Swap prompts that replace one named element in existing footage (a character, outfit, product, prop or object, or the location behind the subjects) and preserve everything else as filmed: performance, camera path, cuts, lighting and event order. Covers the five-part swap contract (identification, object count, Timeline Inheritance, residual-original guard, preservation), contact and occlusion windows, Virtual Portrait asset:// references for character swaps, a muted source master with audio added in post, and swap QA. Use for product placement, competitor-to-own SKU swaps, wardrobe changes, single-character replacement or location swaps on a kept take. Not for rebuilding the whole cast or world around the source motion (seedance-motion-recast), whole-frame style changes (seedance-restyle), new T2V/I2V shots, or task submission.'
 ---
 
 # Seedance Object Swap
@@ -171,3 +159,13 @@ retry.
 - [ ] 1–5 target images, one view each
 - [ ] Post-audio route recorded
 - [ ] Ladder rung stated
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

@@ -32,7 +32,7 @@ Do not invent an artifact, timestamp, listener verdict or measured quality gain.
    settings; do not attribute those confounds to the skill change.
 2. Give writers the brief and appropriate skill version, without expected
    answers, grading rubrics or the other writer's output.
-3. Use `.agents/scripts/evaluate_skill_quality.py pack` at the workspace layer
+3. Use `${CLAUDE_PLUGIN_ROOT}/scripts/evaluate_skill_quality.py pack` at the workspace layer
    to randomize A/B order. Keep `key.json`, version names and source paths away
    from the judge. The pack contains the brief, criteria and complete outputs.
 4. An independent judge records `pack_sha256` for the assessed blind JSON and
@@ -96,8 +96,8 @@ technique or a single failed take into a universal prohibition or guarantee.
 From the workspace root, with complete writer output files:
 
 ```bash
-uv run python .agents/scripts/evaluate_skill_quality.py pack --cases tests/fixtures/creative_quality_cases.json --before before.json --after after.json --seed 908 --out review-package
-uv run python .agents/scripts/evaluate_skill_quality.py summarize --pack review-package/blind.json --key review-package/key.json --judgments judgments.json
+uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/evaluate_skill_quality.py pack --cases tests/fixtures/creative_quality_cases.json --before before.json --after after.json --seed 908 --out review-package
+uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/evaluate_skill_quality.py summarize --pack review-package/blind.json --key review-package/key.json --judgments judgments.json
 ```
 
 Each writer file contains `outputs`, a mapping of every case ID to its complete

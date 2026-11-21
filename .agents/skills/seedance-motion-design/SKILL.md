@@ -1,22 +1,6 @@
 ---
 name: seedance-motion-design
-description: >
-  Write production-grade Seedance 2.5 motion-design and motion-graphics
-  prompts for marketing deliverables — launch videos, motion-on-footage
-  explainers, hypermotion product ads, 3D flythroughs, 2D explainers,
-  editorial explainers, logo reveals, kinetic type, product motion, and
-  data-driven explainers. Exact words, numbers, charts, logos, and UI are
-  authored as deterministic HTML-entrypoint graphics for post-composited
-  fidelity;
-  Seedream supplies only synthesized image layers and Seedance supplies
-  text-free footage or intentionally non-exact plate motion. Use whenever the
-  user asks for motion design, motion graphics, kinetic typography, a logo
-  reveal, product motion, an explainer video, an animated data story, or
-  any text/graphic-driven marketing motion. Composes in prose with
-  html-graphic-render for exact static graphics, seedance-prompt-25 for the
-  six-part formula, seedream-prompt or seedream-storyboard for synthesized
-  image/keyframe layers, and seed-audio-prompt for voice/music. Does not call
-  the API itself.
+description: "Write production-grade Seedance 2.5 motion-design and motion-graphics prompts for marketing deliverables — launch videos, motion-on-footage explainers, hypermotion product ads, 3D flythroughs, 2D explainers, editorial explainers, logo reveals, kinetic type, product motion, and data-driven explainers. Exact words, numbers, charts, logos, and UI are authored as deterministic HTML-entrypoint graphics for post-composited fidelity; Seedream supplies only synthesized image layers and Seedance supplies text-free footage or intentionally non-exact plate motion. Use whenever the user asks for motion design, motion graphics, kinetic typography, a logo reveal, product motion, an explainer video, an animated data story, or any text/graphic-driven marketing motion. Composes in prose with html-graphic-render for exact static graphics, seedance-prompt-25 for the six-part formula, seedream-prompt or seedream-storyboard for synthesized image/keyframe layers, and seed-audio-prompt for voice/music. Does not call the API itself.\n"
 ---
 
 # Seedance Motion Design
@@ -416,3 +400,13 @@ Before returning the prompt (and before any generation task), verify:
 
 The calling agent owns the `prompt-review` gate before submission —
 CRITICAL/MAJOR findings must be fixed before generation.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

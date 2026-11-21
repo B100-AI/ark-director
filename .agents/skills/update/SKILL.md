@@ -1,12 +1,6 @@
 ---
 name: update
-description: >-
-  Bring this repository up to date with its remote: fetch, integrate the
-  upstream branch (default main), resolve merge conflicts file by file while
-  preserving local work, then re-run workspace validation and refresh the skill
-  catalog when skills changed. Use when asked to update the repo, pull latest
-  changes, sync with origin, or resolve conflicts after pulling. Pushes only
-  when the user asks. Not for committing task work or rewriting history.
+description: 'Bring this repository up to date with its remote: fetch, integrate the upstream branch (default main), resolve merge conflicts file by file while preserving local work, then re-run workspace validation and refresh the skill catalog when skills changed. Use when asked to update the repo, pull latest changes, sync with origin, or resolve conflicts after pulling. Pushes only when the user asks. Not for committing task work or rewriting history.'
 ---
 
 # Update the repository
@@ -27,14 +21,14 @@ Pull the latest remote changes into the current checkout and resolve any conflic
 3. **Check overlap.** Compare `git diff --name-only HEAD...<target>` with the locally modified files. No overlap: `git merge --no-edit <target>` (fast-forward when possible). Overlap with uncommitted work: `git pull --autostash --no-rebase origin <branch>`, which restores local edits afterwards; if restore conflicts, resolve them like merge conflicts and keep the autostash entry until resolved.
 4. **Resolve conflicts.** List them with `git diff --name-only --diff-filter=U`. For each file read both sides and decide:
    - Keep both when edits are independent; merge the lines by hand.
-   - Generated or derived files (`.agents/catalog/skills.json`, `.agents/catalog/integrity.json`, `skills-lock.json`, README skill table): merge the source lists, then regenerate with `uv run python .agents/scripts/sync_catalog.py --refresh-integrity` (preview first; add `--write` only after inspecting the listed changes).
+   - Generated or derived files (`${CLAUDE_PLUGIN_ROOT}/catalog/skills.json`, `${CLAUDE_PLUGIN_ROOT}/catalog/integrity.json`, `skills-lock.json`, README skill table): merge the source lists, then regenerate with `uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/sync_catalog.py --refresh-integrity` (preview first; add `--write` only after inspecting the listed changes).
    - Skill bundles: the `.agents/skills/<name>/` side wins structure; keep `.claude/skills/<name>` as a relative symlink, never a copied directory.
    - Local production state (`projects/`) is never merged or overwritten.
    - When intent is unclear, ask the user with both versions shown.
    Remove every conflict marker, `git add` only the resolved files, then finish the merge with `git merge --continue` (or `git commit --no-edit`).
 5. **Verify.** Run, from the repository root:
    - `uv sync --locked`
-   - `uv run python .agents/scripts/validate_workspace.py --offline`
+   - `uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/validate_workspace.py --offline`
    - `uv run python -m unittest discover -s tests -v`
    - `git diff --check`
    - `grep -rn '^<<<<<<<\|^>>>>>>>' .agents README.md skills-lock.json` returns nothing.

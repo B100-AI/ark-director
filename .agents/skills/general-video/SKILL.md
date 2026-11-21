@@ -1,11 +1,6 @@
 ---
 name: general-video
-description: >
-  Author or edit a custom HyperFrames composition when no specialized workflow fits, or when
-  BRIEF.md sets flow: companion. Use for longer or multi-scene pieces, brand and sizzle reels,
-  montages, static loops, static title cards, footage remixes, and freeform builds. Use
-  motion-graphics instead for a short unnarrated motion-first unit, including an animated title.
-  Route fresh creation through hyperframes before using this skill.
+description: "Author or edit a custom HyperFrames composition when no specialized workflow fits, or when BRIEF.md sets flow: companion. Use for longer or multi-scene pieces, brand and sizzle reels, montages, static loops, static title cards, footage remixes, and freeform builds. Use motion-graphics instead for a short unnarrated motion-first unit, including an animated title. Route fresh creation through hyperframes before using this skill.\n"
 ---
 
 **Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../hyperframes/references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.
@@ -36,7 +31,7 @@ Apply the first matching row; do not evaluate lower state rows:
 
 For a new project, choose a kebab-case directory name from the brief and scaffold before writing the brief:
 
-**Workspace overlay:** do not scaffold with `hyperframes init` (it installs skills into the global agent folders). The Studio project is created inside `projects/<project>/studio/` by `uv run python .agents/scripts/studio_project.py sync <project>` (or `init`); use `studio_project.py hf <project> add <name>` for registry blocks.
+**Workspace overlay:** do not scaffold with `hyperframes init` (it installs skills into the global agent folders). The Studio project is created inside `projects/<project>/studio/` by `uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/studio_project.py sync <project>` (or `init`); use `studio_project.py hf <project> add <name>` for registry blocks.
 
 Then write `BRIEF.md` at the project root using `../hyperframes/references/brief-format.md`. In an existing project, the root is the directory containing `hyperframes.json`. Record only the confirmed preference-backed fields named by the brief format, using `node <MEDIA_DIR>/scripts/prefs.mjs record --hyperframes <PROJECT_ROOT>`; never record inferred defaults. Here `<MEDIA_DIR>` is the installed `/media-use` skill directory and `<PROJECT_ROOT>` is the directory containing `hyperframes.json`. If the intent layer adopted a recipe, apply it now with `node <MEDIA_DIR>/scripts/recipe.mjs use --hyperframes <PROJECT_ROOT> --name <name>` and do not ask again.
 

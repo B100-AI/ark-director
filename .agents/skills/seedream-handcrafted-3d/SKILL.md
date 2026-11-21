@@ -1,11 +1,6 @@
 ---
 name: seedream-handcrafted-3d
-description: >
-  Write Seedream prompts for handcrafted stylized 3D characters, portraits,
-  superheroes, and wardrobe material studies with expressive proportions,
-  painterly matte surfaces, pencil hatching, and tactile fabrics. Use when
-  this visual treatment is requested or a supplied reference shows it; not
-  for every character sheet, photorealism, animation, or exact graphic layouts.
+description: "Write Seedream prompts for handcrafted stylized 3D characters, portraits, superheroes, and wardrobe material studies with expressive proportions, painterly matte surfaces, pencil hatching, and tactile fabrics. Use when this visual treatment is requested or a supplied reference shows it; not for every character sheet, photorealism, animation, or exact graphic layouts.\n"
 ---
 
 # Seedream Handcrafted 3D

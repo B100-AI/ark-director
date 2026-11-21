@@ -6,7 +6,7 @@ description: End-to-end pipeline for Seedance video-to-video VFX shot production
 # Seedance VFX Pipeline
 
 End-to-end pipeline for producing a Seedance VFX shot from a source clip
-(default Seedance 2.5; use 2.0 for Fast/Mini variants, and for 4K output follow the 4K routing in `.agents/contracts/routing.md`).
+(default Seedance 2.5; use 2.0 for Fast/Mini variants, and for 4K output follow the 4K routing in `${CLAUDE_PLUGIN_ROOT}/contracts/routing.md`).
 This skill composes the `seedance-vfx-prompt` skill (prompt writing) with the
 `ark-mcp` tools (task submission, polling, download) to produce a saved,
 manifested asset following the workspace's `projects/<project>/` directory
@@ -25,7 +25,7 @@ keep the `showcase-html` canvas and its `--check --stage shot-generation`.
 > `omni_reference_task_type=edit`) for full-duration edits — 2.5 preserves ~the
 > source length, while **2.0's `edit_video` caps output at ~5s** in practice.
 > Use 2.0 for Fast/Mini variants; for 4K output follow the 4K routing in
-> `.agents/contracts/routing.md`. For 2.0 T2V/R2V prompts,
+> `${CLAUDE_PLUGIN_ROOT}/contracts/routing.md`. For 2.0 T2V/R2V prompts,
 > use `seedance-prompt-20`.
 
 Use this skill when the user wants to:
@@ -215,7 +215,7 @@ Before submitting, verify:
 5. **Model and operation** — resolve the model, transport tool, edit operation,
    and reference mode before choosing a checklist. Default 2.5 edit uses
    `seedance_2_5_create_task` with `omni_reference_task_type: edit`; 4K follows the
-   4K routing in `.agents/contracts/routing.md` and needs live tool evidence for
+   4K routing in `${CLAUDE_PLUGIN_ROOT}/contracts/routing.md` and needs live tool evidence for
    the chosen path. Faces
    require fidelity QA, not a model switch.
 6. **Duration and mode compatibility** — for 2.5 edit, validate source length
@@ -295,3 +295,13 @@ Before declaring a VFX shot complete, verify:
       hash-bound decision records `approved` or `rejected` after actual QA.
 - [ ] **No secrets in manifest** — API keys, tokens, credentials never in
       frontmatter or prompt files
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

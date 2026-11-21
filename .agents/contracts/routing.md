@@ -7,6 +7,7 @@
 | MCP unavailable before submission | Equivalent Ark CLI transport if it supports the same required contract and authorized operation |
 | User explicitly requests direct HTTP/curl generation | Use the documented endpoint and exact API contract; resolve credentials from runtime configuration, record `curl` as the transport, and preserve the same review, registry, persistence and reconciliation gates |
 | Timeout after possible submission | Reconcile the existing operation; changing transport is not permission to submit twice |
+| Render resolution, model or duration choice; a cost, bill or estimate question; delivering a higher resolution than an approved take was rendered at | `cost-saving-option`, which holds the 480-First Ladder (draft 480p → fix narrowly → approve the file → deliver by upscale) and advisory estimates from the published token model, kept separate from confirmed billing. It sets no spending cap and blocks no render |
 | Prompt composition only | Relevant independent prompt skill; no asset-generation or production-lock ceremony for a writing-only task |
 | Multi-scene production | `film-production`; declared orchestrators route specialist work |
 | Scene writing or structural feedback | `scene-craft`; preserve supplied writing and explicitly select the craft framework |

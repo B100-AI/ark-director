@@ -1,17 +1,6 @@
 ---
 name: blocking-map
-description: >-
-  Project-agnostic method for giving Seedance character DISPOSITION via a
-  color-coded outline schematic — a "staging reference" (blocking map). Use
-  WHENEVER a user attaches a frame/still and asks for a blocking map / staging
-  reference, whenever a video prompt needs precise multi-character staging (who is
-  where, facing which way), whenever characters jump seats or swap places between
-  shot sizes, when a clip with people must continue but Seedance cannot extend it,
-  or when these terms clearly refer to cinematic staging. Do not trigger for
-  generic software diagrams, architecture, charts, or maps. Figures are ALWAYS
-  bound to letters A, B, C, D... in PROMPT TEXT ONLY — no letters are drawn on the
-  map. The map is GEOMETRY ONLY — it must never bleed style, colors, wardrobe, or
-  location into the shot.
+description: Project-agnostic method for giving Seedance character DISPOSITION via a color-coded outline schematic — a "staging reference" (blocking map). Use WHENEVER a user attaches a frame/still and asks for a blocking map / staging reference, whenever a video prompt needs precise multi-character staging (who is where, facing which way), whenever characters jump seats or swap places between shot sizes, when a clip with people must continue but Seedance cannot extend it, or when these terms clearly refer to cinematic staging. Do not trigger for generic software diagrams, architecture, charts, or maps. Figures are ALWAYS bound to letters A, B, C, D... in PROMPT TEXT ONLY — no letters are drawn on the map. The map is GEOMETRY ONLY — it must never bleed style, colors, wardrobe, or location into the shot.
 ---
 
 # Blocking Map v2 — staging reference as character disposition (any project)

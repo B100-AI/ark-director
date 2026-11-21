@@ -1,16 +1,6 @@
 ---
 name: seedance-vfx-prompt
-description: >-
-  Write prompts for edits to existing footage: background replacement, creature
-  or object integration, world changes, relighting, weather, dialogue, and
-  timed camera effects. Default to Seedance 2.5 structured edit-goal grammar;
-  retain legacy 2.0 headings and compact VFX recipes for explicitly selected
-  supported paths. Use source inspection, ordered @Video N/@Image N bindings, a
-  declared may-change/must-preserve contract, physical lighting, layered space,
-  timing, audio, and face-fidelity QA. Exclude single-element swaps
-  (seedance-object-swap), whole-frame restyles (seedance-restyle), new T2V/I2V
-  shots, still-image creation, whole-cast motion recasts, and task submission;
-  the caller owns the generation lifecycle.
+description: 'Write prompts for edits to existing footage: background replacement, creature or object integration, world changes, relighting, weather, dialogue, and timed camera effects. Default to Seedance 2.5 structured edit-goal grammar; retain legacy 2.0 headings and compact VFX recipes for explicitly selected supported paths. Use source inspection, ordered @Video N/@Image N bindings, a declared may-change/must-preserve contract, physical lighting, layered space, timing, audio, and face-fidelity QA. Exclude single-element swaps (seedance-object-swap), whole-frame restyles (seedance-restyle), new T2V/I2V shots, still-image creation, whole-cast motion recasts, and task submission; the caller owns the generation lifecycle.'
 ---
 
 # Seedance VFX Prompt
@@ -245,3 +235,13 @@ do not impose legacy headings or 4K parameters on that branch.
       (if intro prepended)
 - [ ] **Iteration discipline** — only the named change applied, rest of prompt
       stable (if iterating)
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

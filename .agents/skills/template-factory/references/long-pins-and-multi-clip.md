@@ -108,9 +108,9 @@ When one run handles several pins:
   optional tool submissions, uploads and task records to prevent duplicates.
   Every generation registry
   write, by any agent, goes through the lock in
-  `.agents/scripts/operation_store.py`: `registry_lock`, `read_registry`,
+  `${CLAUDE_PLUGIN_ROOT}/scripts/operation_store.py`: `registry_lock`, `read_registry`,
   `replace_registry`, or `prepare_operation`.
-  `.agents/scripts/prepare_request.py --register` does this for you.
+  `${CLAUDE_PLUGIN_ROOT}/scripts/prepare_request.py --register` does this for you.
 - Upload each shared element reference once, and record the object keys in
   `ref_cache.json` from the main agent.
 - A pin that is fully deterministic, such as a flat motion graphic rebuilt from

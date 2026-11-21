@@ -1,21 +1,6 @@
 ---
 name: blender-to-seedance
-description: >
-  End-to-end pipeline that turns a Blender blockout into a Seedance 2.5 video.
-  Builds a graybox previz in Blender (primitives, color-coded proxies, spline
-  camera), renders it to a 24fps MPEG-4 viewport-style clip, uploads it, and
-  submits a video-to-video task where the previz is the locked motion and camera
-  master and the prompt only dresses the world (characters, locations, materials,
-  style). Composes the blender-* skills (build), seedance-prompt-25 blockout
-  grammar (prompt), ark-mcp (submit/poll/download), and
-  seedance-vfx-pipeline's save/manifest pattern. This is an orchestrator skill:
-  it delegates the build to the blender-* skills, the grammar to
-  seedance-prompt-25, submission to ark-mcp, and stage review to the
-  project's Studio project. Use whenever the user wants to
-  direct a shot from 3D — "blockout to video", "graybox previz to Seedance",
-  "3D to Seedance", "previz the camera then render", "Blender blocking to
-  Seedance" — or wants camera, cuts, and timing locked down before spending
-  video credits.
+description: "End-to-end pipeline that turns a Blender blockout into a Seedance 2.5 video. Builds a graybox previz in Blender (primitives, color-coded proxies, spline camera), renders it to a 24fps MPEG-4 viewport-style clip, uploads it, and submits a video-to-video task where the previz is the locked motion and camera master and the prompt only dresses the world (characters, locations, materials, style). Composes the blender-* skills (build), seedance-prompt-25 blockout grammar (prompt), ark-mcp (submit/poll/download), and seedance-vfx-pipeline's save/manifest pattern. This is an orchestrator skill: it delegates the build to the blender-* skills, the grammar to seedance-prompt-25, submission to ark-mcp, and stage review to the project's Studio project. Use whenever the user wants to direct a shot from 3D — \"blockout to video\", \"graybox previz to Seedance\", \"3D to Seedance\", \"previz the camera then render\", \"Blender blocking to Seedance\" — or wants camera, cuts, and timing locked down before spending video credits.\n"
 ---
 
 # Blender to Seedance
@@ -254,3 +239,13 @@ current SHA-256, `reference_video` role and `control_only: false`, and confirm
 live mode support (see [Blockout manifest](references/blockout-manifest.md)).
 Flipping the flag alone never grants approval; the caller applies the
 [production policy](../../contracts/production-policy.md).
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

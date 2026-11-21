@@ -1,15 +1,6 @@
 ---
 name: seedance-lens-presets
-description: >
-  Turns a lens, focal length, aperture, focus or sensor request into a canonical
-  visible-result phrase for Seedance 2.5 prompts or the Seedream style.
-  Trigger words: lens, focal length, 35mm, 50mm, 85mm, wide angle, telephoto,
-  anamorphic, fisheye, macro, aperture, f-stop, f/1.4, depth of field, bokeh,
-  shallow DOF, deep focus, rack focus, focus pull, or a lens intent from a shot
-  plan. Keep optical look
-  separate from supported output
-  parameters; preserve the selected model and send unresolved resolution needs
-  to the caller rather than switching models automatically.
+description: "Turns a lens, focal length, aperture, focus or sensor request into a canonical visible-result phrase for Seedance 2.5 prompts or the Seedream style. Trigger words: lens, focal length, 35mm, 50mm, 85mm, wide angle, telephoto, anamorphic, fisheye, macro, aperture, f-stop, f/1.4, depth of field, bokeh, shallow DOF, deep focus, rack focus, focus pull, or a lens intent from a shot plan. Keep optical look separate from supported output parameters; preserve the selected model and send unresolved resolution needs to the caller rather than switching models automatically.\n"
 ---
 
 # Seedance Lens Presets

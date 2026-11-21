@@ -1,18 +1,6 @@
 ---
 name: seedance-effects-studio
-description: >-
-  Orchestrator. Offer a menu of 45 named video effects (street colossus, incline,
-  clones, melting, world morphing, eyes in, bullet time, earth zoom, smash and
-  grab and more), let the user pick one, inspect their photo or clip, write that
-  effect's Seedance 2.5 prompt from its recipe, apply mode-appropriate preflight,
-  submit through ark-mcp, and inspect and select the take under approval_mode.
-  Both review modes retain native Draft-first generation; strict adds detailed
-  review. Sequences seedance-prompt-25, optional prompt-review, ark-mcp,
-  seedance-restyle (video-to-video effects), the Studio project and the post tools
-  named in each recipe. Use when the user wants a named visual effect applied to
-  their own photo, product or clip, or asks what effects are available. Not for
-  free-form prompts (seedance-prompt-25), whole-clip restyles that are not on the
-  menu (seedance-restyle), or multi-scene films (film-production).
+description: Orchestrator. Offer a menu of 45 named video effects (street colossus, incline, clones, melting, world morphing, eyes in, bullet time, earth zoom, smash and grab and more), let the user pick one, inspect their photo or clip, write that effect's Seedance 2.5 prompt from its recipe, apply mode-appropriate preflight, submit through ark-mcp, and inspect and select the take under approval_mode. Both review modes retain native Draft-first generation; strict adds detailed review. Sequences seedance-prompt-25, optional prompt-review, ark-mcp, seedance-restyle (video-to-video effects), the Studio project and the post tools named in each recipe. Use when the user wants a named visual effect applied to their own photo, product or clip, or asks what effects are available. Not for free-form prompts (seedance-prompt-25), whole-clip restyles that are not on the menu (seedance-restyle), or multi-scene films (film-production).
 ---
 
 # Seedance Effects Studio
@@ -287,3 +275,13 @@ Provider rules (details and wording in
 | Per-effect recipe | `references/effects-<group>.md` from the menu |
 | Calls, parameters, registry, QA and post steps | [generation-flow.md](references/generation-flow.md) |
 | Current-input validation and tooling contracts | [evidence-status.md](references/evidence-status.md) |
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

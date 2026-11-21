@@ -1,17 +1,6 @@
 ---
 name: ffmpeg-scene-transitions
-description: >
-  Assemble multiple video clips into one film with crossfade scene transitions and
-  correct audio/video sync using FFmpeg. Use whenever the user wants to combine
-  multiple scenes into a single video, stitch clips with dissolves, crossfade
-  between shots, join AI-generated video scenes into one file, or fix audio/video
-  drift in an assembled film. Also trigger on phrases like "assemble the scenes",
-  "combine multiple clips into one video", "add transitions between scenes", "the
-  audio is out of sync after combining", "crossfade the takes together", "compile
-  all the locked videos into one highlight", or "combine all the scene videos
-  into one film". Handles clips of mixed durations and clips whose audio is
-  either shorter or longer than their video.
-  Single-clip fade in/out belongs to the base `ffmpeg` skill, not this one.
+description: "Assemble multiple video clips into one film with crossfade scene transitions and correct audio/video sync using FFmpeg. Use whenever the user wants to combine multiple scenes into a single video, stitch clips with dissolves, crossfade between shots, join AI-generated video scenes into one file, or fix audio/video drift in an assembled film. Also trigger on phrases like \"assemble the scenes\", \"combine multiple clips into one video\", \"add transitions between scenes\", \"the audio is out of sync after combining\", \"crossfade the takes together\", \"compile all the locked videos into one highlight\", or \"combine all the scene videos into one film\". Handles clips of mixed durations and clips whose audio is either shorter or longer than their video. Single-clip fade in/out belongs to the base `ffmpeg` skill, not this one.\n"
 ---
 
 # FFmpeg Scene Transitions
@@ -312,3 +301,13 @@ millisecond after 11 crossfades.
 
 - `ffmpeg` skill — general single-clip operations; this skill's crossfade
   recipe above is self-contained.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill reviews or finishes takes. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Check takes against `arklib.py constraints` (QA rules) and listen for every `watch` word from `arklib.py lookup-file`.
+- For each defect, run `arklib.py match "<symptom>"` and cite the matching F-id and method in the review.
+- Defects fixed and approved are logged (`add-fix`, `media-add`); the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

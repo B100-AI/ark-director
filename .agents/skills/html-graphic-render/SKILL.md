@@ -1,15 +1,6 @@
 ---
 name: html-graphic-render
-description: >-
-  Author and render deterministic static graphics from one project-local HTML
-  entrypoint with CSS/SVG dependencies into exact-size PNGs with exact typography,
-  approved local assets, optional
-  transparency, and hash-bound provenance. Use for posters, title or end cards,
-  product grids, UI/screens, price and CTA treatments, lower-thirds, and static
-  overlays when copy and layout must be exact. Use a hybrid when generated or
-  acquired imagery needs deterministic type and composition. Do not use for
-  invented photographic or illustrative imagery, semantic image edits,
-  animation/video, or production review galleries.
+description: Author and render deterministic static graphics from one project-local HTML entrypoint with CSS/SVG dependencies into exact-size PNGs with exact typography, approved local assets, optional transparency, and hash-bound provenance. Use for posters, title or end cards, product grids, UI/screens, price and CTA treatments, lower-thirds, and static overlays when copy and layout must be exact. Use a hybrid when generated or acquired imagery needs deterministic type and composition. Do not use for invented photographic or illustrative imagery, semantic image edits, animation/video, or production review galleries.
 ---
 
 # HTML Graphic Render

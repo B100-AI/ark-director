@@ -501,3 +501,13 @@ index and only the checklist files the prompt type needs.
 - For end-to-end production coordination, `film-production` is the production manager.
 - This skill is called by the main agent during prompt-writing work; it does not call
   generation tools itself.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill reviews or finishes takes. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Check takes against `arklib.py constraints` (QA rules) and listen for every `watch` word from `arklib.py lookup-file`.
+- For each defect, run `arklib.py match "<symptom>"` and cite the matching F-id and method in the review.
+- Defects fixed and approved are logged (`add-fix`, `media-add`); the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

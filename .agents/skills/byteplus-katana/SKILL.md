@@ -1,19 +1,6 @@
 ---
 name: byteplus-katana
-description: >-
-  Plan a reference video edit rebuilt with the user's own characters, products
-  or clothing. Measures the reference into an edit decision list (shot order,
-  cut times, cut driver: beat, speech, action or none, motion inventory,
-  text), maps up to five assets to slots, and routes each segment by what it
-  shows: live-action footage becomes kept, recast or generated shots; posed
-  cutouts, cards and graphics become HyperFrames layers; exact type stays
-  deterministic. Scales shots to the reference and
-  tracks per-segment refinements. Use for "make this edit with my product"
-  in any format: fashion lookbooks, product launches, food, travel montages,
-  talking-head explainers, music-led hero and aura-farming edits. Planning
-  only. Not for style recipes (template-factory), recasting
-  one clip (seedance-motion-recast), one-element swaps (seedance-object-swap)
-  or single shot prompts (seedance-prompt-25).
+description: 'Plan a reference video edit rebuilt with the user''s own characters, products or clothing. Measures the reference into an edit decision list (shot order, cut times, cut driver: beat, speech, action or none, motion inventory, text), maps up to five assets to slots, and routes each segment by what it shows: live-action footage becomes kept, recast or generated shots; posed cutouts, cards and graphics become HyperFrames layers; exact type stays deterministic. Scales shots to the reference and tracks per-segment refinements. Use for "make this edit with my product" in any format: fashion lookbooks, product launches, food, travel montages, talking-head explainers, music-led hero and aura-farming edits. Planning only. Not for style recipes (template-factory), recasting one clip (seedance-motion-recast), one-element swaps (seedance-object-swap) or single shot prompts (seedance-prompt-25).'
 ---
 
 # Reference Edit Rebuild
@@ -241,3 +228,13 @@ works internally:
    only the affected shots.
 4. The cut grid is enforced in assembly, because generated timelines drift.
 5. The five-asset default is a plan limit, not a model limit.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

@@ -1,17 +1,6 @@
 ---
 name: seedance-ai-avatar
-description: >-
-  Build a reusable AI avatar (digital twin) of a consenting real presenter and
-  generate lip-synced Seedance 2.5 talking-head takes of them saying new lines.
-  Covers the consent and real-likeness policy gates with provenance, verified
-  photo collection, a Seedream identity character sheet, voice-timbre clip
-  isolation from the presenter's own video (VOD voice separation), locked 1:1
-  and 9:16 camera-beat talking-head prompt templates, and take QA (identity,
-  transcript diff, lip-sync, voice resemblance). Never disguises or reroutes
-  inputs after a provider privacy rejection. Use when the user wants an AI
-  avatar, digital twin, or voice clone of a creator, host, founder, or
-  spokesperson speaking a new script in Seedance. Pair with
-  seedance-avatar-news for the full news-short edit.
+description: Build a reusable AI avatar (digital twin) of a consenting real presenter and generate lip-synced Seedance 2.5 talking-head takes of them saying new lines. Covers the consent and real-likeness policy gates with provenance, verified photo collection, a Seedream identity character sheet, voice-timbre clip isolation from the presenter's own video (VOD voice separation), locked 1:1 and 9:16 camera-beat talking-head prompt templates, and take QA (identity, transcript diff, lip-sync, voice resemblance). Never disguises or reroutes inputs after a provider privacy rejection. Use when the user wants an AI avatar, digital twin, or voice clone of a creator, host, founder, or spokesperson speaking a new script in Seedance. Pair with seedance-avatar-news for the full news-short edit.
 ---
 
 # Seedance AI Avatar
@@ -136,3 +125,13 @@ At most one retake, and only for a clear defect. Tell the user why before retaki
 | Last words clipped or rushed | Measure delivery, onset and tail; preserve the exact script and propose retiming or splitting before authorized rewrites |
 | Gesture on the wrong hand | Name each hand by anatomy plus frame side ("his right hand, frame-left") |
 | Background job lost after MCP restart | Check `.artifacts/` for newer files, then poll the provider task ID |
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

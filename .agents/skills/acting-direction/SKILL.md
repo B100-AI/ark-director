@@ -120,3 +120,12 @@ Tigran. No source-specific production examples or downloaded source library
 are bundled here. New examples are hypothetical, not approved canon.
 Model-independent direction does not establish model capability, rights to a
 performer's likeness or voice, or permission to submit paid requests.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes dialogue or scripts that will be spoken by Seedance / Seed Audio. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before handing lines on: `arklib.py lookup-file` (or `lookup`) on every spoken line and replace `avoid` words with the suggested swaps; keep the owner's exact wording otherwise and flag any change.
+- Mark `watch` words in the script notes so the render step listens for them.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

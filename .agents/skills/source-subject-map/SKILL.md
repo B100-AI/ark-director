@@ -1,15 +1,6 @@
 ---
 name: source-subject-map
-description: >-
-  Analyze an existing source clip into an auditable subject map before
-  recasting, swapping, or VFX-editing footage with several subjects or objects.
-  Records source hash and probe data, cuts, subjects with observable
-  descriptors (screen position, clothing, action), swappable objects with
-  per-cut counts, occlusions, hand/object contact windows, speakers with speech
-  windows, on-screen text and logos, and open ambiguities, confirmed by a
-  per-cut keyframe spot-check. Observable descriptors only; never identifies
-  real people. Open ambiguities block downstream prompt writing. Analysis only;
-  excludes media generation and prompt writing.
+description: Analyze an existing source clip into an auditable subject map before recasting, swapping, or VFX-editing footage with several subjects or objects. Records source hash and probe data, cuts, subjects with observable descriptors (screen position, clothing, action), swappable objects with per-cut counts, occlusions, hand/object contact windows, speakers with speech windows, on-screen text and logos, and open ambiguities, confirmed by a per-cut keyframe spot-check. Observable descriptors only; never identifies real people. Open ambiguities block downstream prompt writing. Analysis only; excludes media generation and prompt writing.
 ---
 
 # Source Subject Map
