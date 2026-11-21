@@ -306,3 +306,13 @@ Before returning an acting block, verify:
 - [ ] Dialogue fit uses measured or native-language-informed delivery with onset,
       pauses and tail, not a universal English word-rate gate. Overruns and
       unverified fit return to the caller without altering locked text or timing.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

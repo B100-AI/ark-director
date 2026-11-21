@@ -1,14 +1,6 @@
 ---
 name: ugc-motion-presets
-description: >
-  Turn a named UGC motion preset into a canonical Seedance 2.5 prompt block.
-  Use when the user names one of the 45 presets (Atomic, Outfit Switch,
-  Eating Zoom, Group Photo, Yacht, ...) or asks for
-  preset-style UGC motion — reaction, selfie, fashion, eating, VFX spectacle,
-  action, timelapse, or multi-shot formats. Persuasion angle, claims, and CTA
-  belong to ugc-ad-modes; prompt grammar belongs to seedance-prompt-25. Presets
-  with a locked-off camera block record `format_static_by_design`; multi-shot
-  presets take a shot plan. Never generates media.
+description: "Turn a named UGC motion preset into a canonical Seedance 2.5 prompt block. Use when the user names one of the 45 presets (Atomic, Outfit Switch, Eating Zoom, Group Photo, Yacht, ...) or asks for preset-style UGC motion — reaction, selfie, fashion, eating, VFX spectacle, action, timelapse, or multi-shot formats. Persuasion angle, claims, and CTA belong to ugc-ad-modes; prompt grammar belongs to seedance-prompt-25. Presets with a locked-off camera block record `format_static_by_design`; multi-shot presets take a shot plan. Never generates media.\n"
 ---
 
 # UGC Motion Presets

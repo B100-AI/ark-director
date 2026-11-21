@@ -1,19 +1,13 @@
 ---
 name: hyperframes-cli
-description: >
-  Use the HyperFrames CLI development loop: init, add, catalog, capture, lint, check, snapshot,
-  compare, grade-compare, preview, play, present, beats, keyframes, single or batch render, publish,
-  cloud, cloudrun, feedback, lambda, doctor, browser, info, upgrade, skills, compositions, timeline, history, clean, docs,
-  benchmark, telemetry, transcribe, auth, tts, and remove-background. Also use when diagnosing build
-  or render failures. validate, inspect, and layout are deprecated aliases; use check. Covers local,
-  HeyGen-hosted cloud, AWS Lambda, and Google Cloud Run rendering.
+description: "Use the HyperFrames CLI development loop: init, add, catalog, capture, lint, check, snapshot, compare, grade-compare, preview, play, present, beats, keyframes, single or batch render, publish, cloud, cloudrun, feedback, lambda, doctor, browser, info, upgrade, skills, compositions, timeline, history, clean, docs, benchmark, telemetry, transcribe, auth, tts, and remove-background. Also use when diagnosing build or render failures. validate, inspect, and layout are deprecated aliases; use check. Covers local, HeyGen-hosted cloud, AWS Lambda, and Google Cloud Run rendering.\n"
 ---
 
 **Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../hyperframes/references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.
 
 # HyperFrames CLI
 
-**Workspace overlay:** in this workspace run HyperFrames only through `uv run python .agents/scripts/studio_project.py` or the pinned privacy environment in the [production policy](../../contracts/production-policy.md); the repo pins the release, so never run `npx hyperframes@latest` or `upgrade`. Do not run `feedback` (including the post-render report and search-miss, missing-feature and host-app reports below), `usage`, `open` and the `catch-up` that follows it, `auth`, `publish`, `cloud`, `lambda`, `cloudrun`, or `skills` unless the user asks for that action; ignore the instructions below that say otherwise. Use `studio_project.py check` instead of bare `hyperframes check`.
+**Workspace overlay:** in this workspace run HyperFrames only through `uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/studio_project.py` or the pinned privacy environment in the [production policy](../../contracts/production-policy.md); the repo pins the release, so never run `npx hyperframes@latest` or `upgrade`. Do not run `feedback` (including the post-render report and search-miss, missing-feature and host-app reports below), `usage`, `open` and the `catch-up` that follows it, `auth`, `publish`, `cloud`, `lambda`, `cloudrun`, or `skills` unless the user asks for that action; ignore the instructions below that say otherwise. Use `studio_project.py check` instead of bare `hyperframes check`.
 
 Run commands as `npx hyperframes ...` unless project instructions provide a wrapper. Obey the wrapper when present. The CLI requires Node.js 22 or newer and FFmpeg.
 

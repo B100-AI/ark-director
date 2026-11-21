@@ -1,13 +1,6 @@
 ---
 name: seedance-music-video
-description: >-
-  Write Seedance 2.5 music-video prompts from a song, artist brief, or requested
-  format. Map song sections, beat density, performer intent, camera, lyric timing,
-  native versus supplied audio, and natural scene duration into the six-part
-  formula. Cover rap, dance, performance, narrative, abstract, vertical, and custom
-  formats. Use for song-driven visual direction, lyric/performance videos, or
-  music-video revisions. This prompt-only leaf does not generate media; the caller
-  composes only requested specialist axes and owns review and submission.
+description: Write Seedance 2.5 music-video prompts from a song, artist brief, or requested format. Map song sections, beat density, performer intent, camera, lyric timing, native versus supplied audio, and natural scene duration into the six-part formula. Cover rap, dance, performance, narrative, abstract, vertical, and custom formats. Use for song-driven visual direction, lyric/performance videos, or music-video revisions. This prompt-only leaf does not generate media; the caller composes only requested specialist axes and owns review and submission.
 ---
 
 # Seedance Music Video
@@ -482,3 +475,13 @@ Before returning the prompt, verify:
 12. Shot timing preserves the song map without a numeric floor. Assembly may
     supply precise cuts; lyrics and any on-screen text remain edit layers.
 13. The response contains the prompt, not an unrelated production workflow.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

@@ -1,12 +1,6 @@
 ---
 name: seedream-woodblock-poster
-description: >
-  Write Seedream prompts for vivid engraved woodblock-style illustrated posters
-  and cohesive image series from a supplied visual reference or a text concept.
-  Use for folklore, mythology, creatures, or other subjects rendered with flat
-  ink shapes, fine contour hatching, aged paper, dramatic silhouettes, and
-  miniature landscapes. Not for animation, collage assembly, photorealism,
-  character turnarounds, or exact typography and graphic layouts.
+description: "Write Seedream prompts for vivid engraved woodblock-style illustrated posters and cohesive image series from a supplied visual reference or a text concept. Use for folklore, mythology, creatures, or other subjects rendered with flat ink shapes, fine contour hatching, aged paper, dramatic silhouettes, and miniature landscapes. Not for animation, collage assembly, photorealism, character turnarounds, or exact typography and graphic layouts.\n"
 ---
 
 # Seedream Woodblock Poster

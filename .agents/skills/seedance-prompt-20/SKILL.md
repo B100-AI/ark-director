@@ -1,13 +1,6 @@
 ---
 name: seedance-prompt-20
-description: >-
-  Write and revise Seedance 2.0 video prompts, the legacy model used for 4K
-  output and the Fast/Mini speed variants: asset preparation within the 2.0
-  reference limits, Define subject definitions, task-type declaration,
-  shot-by-shot sequencing with inline reference binding, spatial continuity for
-  chase or action blocking, native audio, and inline constraints. Use for
-  Seedance 2.0 prompts, shot lists, 4K or Fast/Mini requests, and corrections
-  to 2.0 generations. For Seedance 2.5 prompts, use seedance-prompt-25 instead.
+description: 'Write and revise Seedance 2.0 video prompts, the legacy model used for 4K output and the Fast/Mini speed variants: asset preparation within the 2.0 reference limits, Define subject definitions, task-type declaration, shot-by-shot sequencing with inline reference binding, spatial continuity for chase or action blocking, native audio, and inline constraints. Use for Seedance 2.0 prompts, shot lists, 4K or Fast/Mini requests, and corrections to 2.0 generations. For Seedance 2.5 prompts, use seedance-prompt-25 instead.'
 ---
 
 # Seedance 2.0 Prompt
@@ -314,3 +307,13 @@ server's model bindings.
 Prototype on Mini 480p, confirm on Fast 720p, finalize on Standard at the
 target resolution. Billing is per successful task; confirm on the
 [Pricing page](https://docs.byteplus.com/en/docs/ModelArk/1544106).
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

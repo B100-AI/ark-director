@@ -1,16 +1,6 @@
 ---
 name: seedance-pacing-presets
-description: >
-  Turn a named pacing or rhythm preset — speed ramp, slow motion, slow-mo,
-  bullet time, ramp up, flash in/out, impact moment, montage, montage pacing,
-  cut rhythm, time-lapse, freeze frame, progressive or partial change (an
-  outfit or material changing part by part), named cuts or transitions,
-  timing, or speed up — into a canonical, timestamped motion,
-  cut, and pacing block for the Seedance 2.5 prompt. Use when the user or a
-  shot plan asks to direct a scene's rhythm, tempo, or editing energy rather
-  than only its content. Bullet time here is the freeze/slow-mo speed ramp; the camera-orbit
-  technique belongs to seedance-camera-presets. Single Shot here is no-cuts
-  pacing; the one-take pass-through camera path belongs to seedance-camera-presets.
+description: "Turn a named pacing or rhythm preset — speed ramp, slow motion, slow-mo, bullet time, ramp up, flash in/out, impact moment, montage, montage pacing, cut rhythm, time-lapse, freeze frame, progressive or partial change (an outfit or material changing part by part), named cuts or transitions, timing, or speed up — into a canonical, timestamped motion, cut, and pacing block for the Seedance 2.5 prompt. Use when the user or a shot plan asks to direct a scene's rhythm, tempo, or editing energy rather than only its content. Bullet time here is the freeze/slow-mo speed ramp; the camera-orbit technique belongs to seedance-camera-presets. Single Shot here is no-cuts pacing; the one-take pass-through camera path belongs to seedance-camera-presets.\n"
 ---
 
 # Seedance Pacing Presets

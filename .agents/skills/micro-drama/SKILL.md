@@ -1,19 +1,6 @@
 ---
 name: micro-drama
-description: >-
-  Produce vertical short-form micro-drama episodes end to end for any market:
-  source-led 9:16 episodes, with an optional hook, reveal and cliffhanger
-  template and optional to-be-continued card.
-  Orchestrates a market story writer when one exists (for example
-  filipino-micro-drama), then appealing canon sheets, planning-only
-  storyboards, review-mode-aware Seedance 2.5 scene clips with native dialogue bound
-  to element references, speech-to-text dialogue QA with word-scoped fixes,
-  ungraded assembly, loudness-matched delivery, and an optional full-episode
-  showreel, all in a HyperFrames Studio project. Use for micro-dramas, vertical
-  dramas, ReelShort/DramaBox-style series, TikTok drama episodes, or batches of
-  several independent episodes produced in parallel. Do not use for a single
-  prompt, a non-episodic ad, a music video, or long-form film; use
-  film-production for general multi-scene work.
+description: 'Produce vertical short-form micro-drama episodes end to end for any market: source-led 9:16 episodes, with an optional hook, reveal and cliffhanger template and optional to-be-continued card. Orchestrates a market story writer when one exists (for example filipino-micro-drama), then appealing canon sheets, planning-only storyboards, review-mode-aware Seedance 2.5 scene clips with native dialogue bound to element references, speech-to-text dialogue QA with word-scoped fixes, ungraded assembly, loudness-matched delivery, and an optional full-episode showreel, all in a HyperFrames Studio project. Use for micro-dramas, vertical dramas, ReelShort/DramaBox-style series, TikTok drama episodes, or batches of several independent episodes produced in parallel. Do not use for a single prompt, a non-episodic ad, a music video, or long-form film; use film-production for general multi-scene work.'
 ---
 
 # Micro-Drama
@@ -114,6 +101,8 @@ and an optional full-episode showreel.
    loudness work is placed in Studio as a clip or overlay and rendered, not
    delivered directly (pre-Studio canvas: `--check --stage delivery`).
 
+9. **Compliance gate (mandatory, final step).** Before delivering, invoke the `tiktok-shop-compliance` skill (or run its scanner on the draft: `python3 "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug> draft.txt`), fix every BLOCK finding, and append a one-line compliance note.
+
 For a batch of episodes, follow [batch production](references/batch-production.md):
 one agent per episode with exclusive project ownership, on-disk checkpoints,
 and a single integrating manager.
@@ -148,3 +137,30 @@ and a single integrating manager.
 Workspace contracts: [production policy](../../contracts/production-policy.md),
 [element identification](../../contracts/element-identification.md),
 [audio-video alignment](../../contracts/audio-video-alignment.md).
+
+## Compliance gate (mandatory final step)
+
+Before delivering, invoke the `tiktok-shop-compliance` skill (or run its bundled
+scanner on the draft), fix every BLOCK finding, and append a one-line compliance
+note.
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug> draft.txt
+# or pipe text: echo "your caption here" | python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug>
+# use python3 instead of python on macOS/Linux
+# <brand-slug>: the brand profile (pao-express, vibrant-hotel, …; list with --list-brands) or the campaign's tiktok-profile.json
+```
+
+Applies to every piece of TikTok-bound text this skill emits — captions, titles,
+on-screen text, scripts, VO and dialogue lines, listings, bios, and replies.
+Never deliver, hand off, or schedule copy while a BLOCK finding remains, and
+never call it "TikTok-ready" until the scanner exits 0.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes dialogue or scripts that will be spoken by Seedance / Seed Audio. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before handing lines on: `arklib.py lookup-file` (or `lookup`) on every spoken line and replace `avoid` words with the suggested swaps; keep the owner's exact wording otherwise and flag any change.
+- Mark `watch` words in the script notes so the render step listens for them.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

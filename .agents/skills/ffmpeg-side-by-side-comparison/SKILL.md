@@ -1,16 +1,6 @@
 ---
 name: ffmpeg-side-by-side-comparison
-description: >
-  Assemble two or more videos into a single side-by-side (or N-up) comparison
-  clip with FFmpeg — before/after, A/B, or a review grid. Handles uniform
-  scaling, pixel-aspect alignment, duration sync, optional labels, and audio.
-  Use whenever the user wants a before-and-after split screen, an A/B
-  comparison of two takes or versions, a compare or review grid, a
-  side-by-side demo, or asks to put clip X and clip Y next to each other —
-  even if they never say "side-by-side". For chronological assembly with
-  crossfades, consider `ffmpeg-scene-transitions`; this skill places clips
-  simultaneously (or staggered one-at-a-time with a frozen second half).
-  Complements the `ffmpeg` skill.
+description: "Assemble two or more videos into a single side-by-side (or N-up) comparison clip with FFmpeg — before/after, A/B, or a review grid. Handles uniform scaling, pixel-aspect alignment, duration sync, optional labels, and audio. Use whenever the user wants a before-and-after split screen, an A/B comparison of two takes or versions, a compare or review grid, a side-by-side demo, or asks to put clip X and clip Y next to each other — even if they never say \"side-by-side\". For chronological assembly with crossfades, consider `ffmpeg-scene-transitions`; this skill places clips simultaneously (or staggered one-at-a-time with a frozen second half). Complements the `ffmpeg` skill.\n"
 ---
 
 # FFmpeg Side-by-Side Comparison

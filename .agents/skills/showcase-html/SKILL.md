@@ -1,17 +1,6 @@
 ---
 name: showcase-html
-description: >
-  Build and maintain a self-contained HTML canvas for generated-media projects
-  created before HyperFrames Studio (projects with a showcase.json), and ad-hoc
-  comparison pages (optional for Studio projects). For a pre-Studio canvas project, keep briefs, stage status,
-  elements, prompts, references, images, audio, video takes, selections, review
-  evidence, assemblies, and deliverables synchronized in one data-driven page
-  throughout every production stage, and lock variants back into manifests. New
-  production projects use a HyperFrames Studio project through
-  studio_project.py instead. Use for pre-Studio canvas project review or lifecycle
-  checkpoints, and whenever the user asks for an HTML gallery, before/after
-  comparison, combined view, or local interface for comparing assets and
-  choosing variants.
+description: "Build and maintain a self-contained HTML canvas for generated-media projects created before HyperFrames Studio (projects with a showcase.json), and ad-hoc comparison pages (optional for Studio projects). For a pre-Studio canvas project, keep briefs, stage status, elements, prompts, references, images, audio, video takes, selections, review evidence, assemblies, and deliverables synchronized in one data-driven page throughout every production stage, and lock variants back into manifests. New production projects use a HyperFrames Studio project through studio_project.py instead. Use for pre-Studio canvas project review or lifecycle checkpoints, and whenever the user asks for an HTML gallery, before/after comparison, combined view, or local interface for comparing assets and choosing variants.\n"
 ---
 
 # Showcase HTML

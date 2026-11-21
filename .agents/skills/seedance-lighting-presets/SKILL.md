@@ -1,14 +1,6 @@
 ---
 name: seedance-lighting-presets
-description: >
-  Translate a named lighting setup into a canonical Seedream `Lighting:` recipe
-  and a matching Seedance visual-style lighting phrase, so the same lighting
-  intent works for images (elements, storyboards) and video, and word timed
-  light cues inside a shot (a lamp clicking off, a flicker). Use when the user
-  or a shot plan asks for lighting, light, rim light, backlight, golden hour,
-  night or moonlight, soft or hard light, three-point, Rembrandt, practical
-  lights, silhouette, contre-jour, key light direction, or a light change. Golden hour here means the physical lighting (sun
-  position and light); for a golden-hour color grade, use color-grade-palettes.
+description: "Translate a named lighting setup into a canonical Seedream `Lighting:` recipe and a matching Seedance visual-style lighting phrase, so the same lighting intent works for images (elements, storyboards) and video, and word timed light cues inside a shot (a lamp clicking off, a flicker). Use when the user or a shot plan asks for lighting, light, rim light, backlight, golden hour, night or moonlight, soft or hard light, three-point, Rembrandt, practical lights, silhouette, contre-jour, key light direction, or a light change. Golden hour here means the physical lighting (sun position and light); for a golden-hour color grade, use color-grade-palettes.\n"
 ---
 
 # Seedance Lighting Presets

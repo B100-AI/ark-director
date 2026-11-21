@@ -7,7 +7,7 @@ explicit gaps rather than fabricating their outputs.
 ## Stage checkpoint for every stage
 
 The project's stage ledger is `studio/stages.json`, kept only by
-`uv run python .agents/scripts/studio_project.py stage <project> {show|start|complete|reopen|skip}`.
+`uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/studio_project.py stage <project> {show|start|complete|reopen|skip}`.
 It holds the eight stages in fixed order (`brief-development`,
 `scene-breakdown`, `canon-elements`, `storyboard-visual-plan`,
 `audio-preparation`, `shot-generation`, `assembly-review`, `delivery`) and is

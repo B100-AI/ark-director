@@ -1,19 +1,6 @@
 ---
 name: seedance-prompt-25
-description: >-
-  Write production-grade Seedance 2.5 video prompts with the flexible six-part
-  formula, per-shot camera, lens and light lines, 50-material multimodal
-  referencing, variable-duration scene staging (4-30s), timestamp pacing and
-  dialogue timing, structured video editing (subject replacement, background
-  replacement, audio editing), forward and backward video extension, keyframe
-  sequences, coarse and fine blockout references, one-click video, seamless
-  transitions, audio bracket syntax, dialogue language reinforcement, emotional
-  direction, camera language, and review-mode-aware request packaging. Use this
-  skill for Seedance 2.5 prompts, multi-reference asset orchestration, scene
-  staging, video editing, extension, and corrections to generated motion or
-  continuity. For legacy Seedance 2.0 prompts, 4K output through 2.0, or the
-  Fast/Mini speed variants, use seedance-prompt-20; whitelist-only 2.5 Premium
-  (4K) uses this skill.
+description: Write production-grade Seedance 2.5 video prompts with the flexible six-part formula, per-shot camera, lens and light lines, 50-material multimodal referencing, variable-duration scene staging (4-30s), timestamp pacing and dialogue timing, structured video editing (subject replacement, background replacement, audio editing), forward and backward video extension, keyframe sequences, coarse and fine blockout references, one-click video, seamless transitions, audio bracket syntax, dialogue language reinforcement, emotional direction, camera language, and review-mode-aware request packaging. Use this skill for Seedance 2.5 prompts, multi-reference asset orchestration, scene staging, video editing, extension, and corrections to generated motion or continuity. For legacy Seedance 2.0 prompts, 4K output through 2.0, or the Fast/Mini speed variants, use seedance-prompt-20; whitelist-only 2.5 Premium (4K) uses this skill.
 ---
 
 # Seedance Prompt
@@ -331,3 +318,13 @@ composition or motion reference. Record its exact selected manifest, current
 SHA-256, `reference_image` or `reference_video` role, and `control_only: false`.
 Confirm live model/mode support. Flipping the flag alone never grants approval;
 the caller applies the [production policy](../../contracts/production-policy.md).
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

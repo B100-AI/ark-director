@@ -297,6 +297,10 @@ Selection follows the project's `approval_mode` per the
 [Production policy](../../contracts/production-policy.md), and only a passing
 result may be selected. Picture/audio lock and final master acceptance use separate stage decisions.
 
+### Step 9 — Compliance gate (mandatory, final step)
+
+Before delivering, invoke the `tiktok-shop-compliance` skill (or run its scanner on the draft: `python3 "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug> draft.txt`), fix every BLOCK finding, and append a one-line compliance note.
+
 ## Multilingual guidance
 
 Seed Audio supports multilingual synthesis.
@@ -348,3 +352,31 @@ Verification of words, accent and timing follows the verification section of
 `seed-audio-prompt` when that skill is available: an ASR transcript is the
 authority for words, a native listener for accent, and arc timing is measured
 and fixed in assembly.
+
+## Compliance gate (mandatory final step)
+
+Before delivering, invoke the `tiktok-shop-compliance` skill (or run its bundled
+scanner on the draft), fix every BLOCK finding, and append a one-line compliance
+note.
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug> draft.txt
+# or pipe text: echo "your caption here" | python "${CLAUDE_PLUGIN_ROOT}/skills/tiktok-shop-compliance/scripts/tiktok_compliance_scan.py" --brand <brand-slug>
+# use python3 instead of python on macOS/Linux
+# <brand-slug>: the brand profile (pao-express, vibrant-hotel, …; list with --list-brands) or the campaign's tiktok-profile.json
+```
+
+Applies to every piece of TikTok-bound text this skill emits — captions, titles,
+on-screen text, scripts, VO and dialogue lines, listings, bios, and replies.
+Never deliver, hand off, or schedule copy while a BLOCK finding remains, and
+never call it "TikTok-ready" until the scanner exits 0.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill writes or renders spoken lines. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before any render: `arklib.py constraints`, then `arklib.py lookup` / `lookup-file` on every line; swap or respell any `avoid` word (see `dialogue-pronunciation-guard`).
+- After the render: listen for `watch` words; a failure goes to `arklib.py match "<symptom>"` and `dialogue-fix-ladder`.
+- Approved fixes are logged with `add-fix` / `add-word` / `media-add` and the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

@@ -1,15 +1,6 @@
 ---
 name: hyperframes
-description: >
-  Mandatory entry point: read this first for any request to make, create, edit, animate, or render a
-  video, animation, or motion graphic, including a promo, explainer, captioned clip, title card,
-  overlay, slideshow or interactive deck, Remotion port, or any HyperFrames HTML composition. Also
-  use it to inspect, diagnose, validate, preview, publish, or batch-render an existing HyperFrames
-  project. Inputs may be a website URL, GitHub PR, Figma design or URL, text or brief, existing
-  footage, or music. It resumes project state, captures intent when applicable, selects and installs
-  the owning workflow, and routes domain capabilities. HyperFrames is the default output framework
-  unless the user explicitly chooses another framework for the deliverable or asks only to record a
-  browser session.
+description: "Mandatory entry point: read this first for any request to make, create, edit, animate, or render a video, animation, or motion graphic, including a promo, explainer, captioned clip, title card, overlay, slideshow or interactive deck, Remotion port, or any HyperFrames HTML composition. Also use it to inspect, diagnose, validate, preview, publish, or batch-render an existing HyperFrames project. Inputs may be a website URL, GitHub PR, Figma design or URL, text or brief, existing footage, or music. It resumes project state, captures intent when applicable, selects and installs the owning workflow, and routes domain capabilities. HyperFrames is the default output framework unless the user explicitly chooses another framework for the deliverable or asks only to record a browser session.\n"
 ---
 
 **Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.
@@ -82,7 +73,7 @@ For fresh creation the intent layer (`references/intent-interview.md`) runs the 
 
 ## 4. Install and enter the workflow
 
-**Workspace overlay:** skills in this repository are managed in `.agents/skills/` and are never installed globally. Do not run `npx hyperframes skills`, `skills update`, `skills check` or `npx skills add`, and never accept the skill install that `init` offers: they write into the global agent folders. Run HyperFrames only through `uv run python .agents/scripts/studio_project.py` or the pinned privacy environment described in the [production policy](../../contracts/production-policy.md).
+**Workspace overlay:** skills in this repository are managed in `.agents/skills/` and are never installed globally. Do not run `npx hyperframes skills`, `skills update`, `skills check` or `npx skills add`, and never accept the skill install that `init` offers: they write into the global agent folders. Run HyperFrames only through `uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/studio_project.py` or the pinned privacy environment described in the [production policy](../../contracts/production-policy.md).
 
 If the matched workflow's `SKILL.md` is present under `.agents/skills/<workflow-name>/`, read it. If it is absent, say so and ask the owner to vendor it from the upstream release tag through a reviewed change (see `AGENTS.md`); do not reconstruct the workflow from memory and do not download a different release. Everything else about skill lifecycle lives in `references/skill-lifecycle.md`, whose install commands do not apply here.
 

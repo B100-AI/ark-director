@@ -200,7 +200,7 @@ pin_local → breakdown_draft → breakdown_approved → elements_draft
    When the picture needs several clips, follow the shot budget, trim-point,
    state-ledger, and continuous-audio rules in
    [long pins and multi-clip takes](references/long-pins-and-multi-clip.md).
-   Prepare each request with `.agents/scripts/prepare_request.py`. Composite
+   Prepare each request with `${CLAUDE_PLUGIN_ROOT}/scripts/prepare_request.py`. Composite
    timed overlays from a JSON timeline with
    `html-graphic-render/scripts/overlay_timeline.py`, timed to the take's
    measured cuts rather than the prompt timestamps.
@@ -235,7 +235,7 @@ perception requirements. Otherwise process bounded windows in the main session.
 The main agent integrates findings and owns shared state. Native reasoning creates no
 provider registry entries; optional provider operations retain their required
 task IDs and records. Generation registry writes still use the lock in
-`.agents/scripts/operation_store.py`. See
+`${CLAUDE_PLUGIN_ROOT}/scripts/operation_store.py`. See
 [multi-pin batches](references/long-pins-and-multi-clip.md#multi-pin-batches).
 
 ### Still / poster track
@@ -433,3 +433,13 @@ derived control asset (for example a motion blockout) stays
 reference; then record its manifest, current SHA-256, `reference_image` or
 `reference_video` role, and `control_only: false`, and confirm live mode
 support. Flipping the flag alone never grants approval.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

@@ -1,22 +1,13 @@
 ---
 name: hyperframes-studio
-description: >
-  Use when working with a person on a HyperFrames project in Studio: first,
-  whether their message asks for a change at all (questions, loose ideas and
-  "don't change anything" get an answer and a plan, not an edit); for a new
-  film, the plan, storyboard and build order that the HyperFrames launch films follow;
-  and how the timeline should be laid out so it reads well (one caption track,
-  one element kind per track, every scene a sub-composition) and where captions
-  and key content may sit (safe zones). Don't use for how to perform an
-  individual edit (split, trim, retime, volume, copy, swap): that is
-  `creator-editing-recipes.md` in `/hyperframes-core`.
+description: "Use when working with a person on a HyperFrames project in Studio: first, whether their message asks for a change at all (questions, loose ideas and \"don't change anything\" get an answer and a plan, not an edit); for a new film, the plan, storyboard and build order that the HyperFrames launch films follow; and how the timeline should be laid out so it reads well (one caption track, one element kind per track, every scene a sub-composition) and where captions and key content may sit (safe zones). Don't use for how to perform an individual edit (split, trim, retime, volume, copy, swap): that is `creator-editing-recipes.md` in `/hyperframes-core`.\n"
 ---
 
 **Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../hyperframes/references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.
 
 # HyperFrames Studio conventions
 
-**Workspace overlay:** run the final gate with `uv run python .agents/scripts/studio_project.py check <project>` instead of bare `hyperframes check`. Feedback is given in Studio (storyboard comments, Ask agent / Copy to Agent), and the agent reads the running Studio with `hyperframes preview --context --json` and `--selection --json` through the pinned entry in the [production policy](../../contracts/production-policy.md); `studio_project.py` does not wrap these. Never run `hyperframes feedback`, `usage` or `open` unless the user asks.
+**Workspace overlay:** run the final gate with `uv run python ${CLAUDE_PLUGIN_ROOT}/scripts/studio_project.py check <project>` instead of bare `hyperframes check`. Feedback is given in Studio (storyboard comments, Ask agent / Copy to Agent), and the agent reads the running Studio with `hyperframes preview --context --json` and `--selection --json` through the pinned entry in the [production policy](../../contracts/production-policy.md); `studio_project.py` does not wrap these. Never run `hyperframes feedback`, `usage` or `open` unless the user asks.
 
 Studio draws one timeline row per top-level element. A project that follows the
 rules below opens as a short, readable timeline; one that does not opens as a wall

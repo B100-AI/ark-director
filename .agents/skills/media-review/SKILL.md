@@ -1,11 +1,6 @@
 ---
 name: media-review
-description: >
-  Emergency CLI fallback for opening generated images or videos in macOS when
-  Studio preview or the pre-Studio canvas is unavailable, or when the user
-  explicitly requests an OS-native player. Never use it as production-stage
-  review evidence: project workflows require the Studio stage-exit checks (or,
-  for a pre-Studio canvas project with showcase.json, the showcase-html freshness check).
+description: "Emergency CLI fallback for opening generated images or videos in macOS when Studio preview or the pre-Studio canvas is unavailable, or when the user explicitly requests an OS-native player. Never use it as production-stage review evidence: project workflows require the Studio stage-exit checks (or, for a pre-Studio canvas project with showcase.json, the showcase-html freshness check).\n"
 ---
 
 # Media Review
@@ -111,3 +106,13 @@ open _review_sheet.png
 - Clean up any throwaway `_review_*.png` sheets after the user has decided
   (CLAYGO), unless the user wants to keep them.
 - For video before/after comparison clips, compose with `ffmpeg-side-by-side-comparison`.
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill reviews or finishes takes. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Check takes against `arklib.py constraints` (QA rules) and listen for every `watch` word from `arklib.py lookup-file`.
+- For each defect, run `arklib.py match "<symptom>"` and cite the matching F-id and method in the review.
+- Defects fixed and approved are logged (`add-fix`, `media-add`); the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

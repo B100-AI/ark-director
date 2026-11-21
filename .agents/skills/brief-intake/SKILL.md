@@ -1,15 +1,6 @@
 ---
 name: brief-intake
-description: >
-  Shape a creative brief around the intended audience reaction, central visual
-  idea, and practical constraints. Derive applicable directing choices with
-  reasons; offer two distinct treatments during exploration or a compact
-  proposal when direction is settled. Confirm only decisions that need a lock.
-  When the brief cites real brand video ads or other footage for visual or motion
-  inspiration, record that reference and hand off local media acquisition plus
-  native host-agent inspection or template-factory — do not treat scripts or article text as
-  the reference. Use for a new project or a scoped brief revision. Never
-  generates media.
+description: "Shape a creative brief around the intended audience reaction, central visual idea, and practical constraints. Derive applicable directing choices with reasons; offer two distinct treatments during exploration or a compact proposal when direction is settled. Confirm only decisions that need a lock. When the brief cites real brand video ads or other footage for visual or motion inspiration, record that reference and hand off local media acquisition plus native host-agent inspection or template-factory — do not treat scripts or article text as the reference. Use for a new project or a scoped brief revision. Never generates media.\n"
 ---
 
 # Brief Intake

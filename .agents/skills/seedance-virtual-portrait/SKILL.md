@@ -1,13 +1,6 @@
 ---
 name: seedance-virtual-portrait
-description: >-
-  Prepare authorized human face, likeness and voice references for Seedance
-  Advanced Creation Rights. Reuse existing authorized assets without repeated
-  onboarding, register invented characters as Virtual Portraits, bind asset://
-  references, and resolve Seedance privacy and guardrail flags on real-person
-  inputs legally through the registered asset route. Covers images, video and
-  audio; preserves documented account exceptions and authorization scope.
-  Does not submit generation or bypass content moderation.
+description: Prepare authorized human face, likeness and voice references for Seedance Advanced Creation Rights. Reuse existing authorized assets without repeated onboarding, register invented characters as Virtual Portraits, bind asset:// references, and resolve Seedance privacy and guardrail flags on real-person inputs legally through the registered asset route. Covers images, video and audio; preserves documented account exceptions and authorization scope. Does not submit generation or bypass content moderation.
 ---
 
 # Seedance Virtual Portrait and Advanced Creation Rights

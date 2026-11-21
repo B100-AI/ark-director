@@ -1,20 +1,6 @@
 ---
 name: seedance-motion-recast
-description: >-
-  Write Seedance 2.5 Motion Transfer (recast) prompts that keep a source clip's
-  body motion, pose sequence, screen positions, camera path, framing changes,
-  cuts and timing while rebuilding cast, wardrobe, product, location and style
-  from locked reference images. Covers the motion-only authority split, an
-  explicit mapping or disposition for every visible source subject, bleed and
-  extra-people guards, Virtual Portrait asset:// identity references, a muted
-  source master with audio added in post, named look presets, and a 480p
-  key-beat probe ladder. Consumes a subject_map.json when available or
-  inspects the source itself. Use to recast performers, localize a take for
-  another market, or rebuild its world around the same performance. Not for
-  replacing one element while preserving source pixels (seedance-object-swap),
-  redrawing the same cast in a new medium (seedance-restyle), other edits
-  (seedance-vfx-prompt), new T2V/I2V shots, or task submission; the caller
-  owns the generation lifecycle.
+description: Write Seedance 2.5 Motion Transfer (recast) prompts that keep a source clip's body motion, pose sequence, screen positions, camera path, framing changes, cuts and timing while rebuilding cast, wardrobe, product, location and style from locked reference images. Covers the motion-only authority split, an explicit mapping or disposition for every visible source subject, bleed and extra-people guards, Virtual Portrait asset:// identity references, a muted source master with audio added in post, named look presets, and a 480p key-beat probe ladder. Consumes a subject_map.json when available or inspects the source itself. Use to recast performers, localize a take for another market, or rebuild its world around the same performance. Not for replacing one element while preserving source pixels (seedance-object-swap), redrawing the same cast in a new medium (seedance-restyle), other edits (seedance-vfx-prompt), new T2V/I2V shots, or task submission; the caller owns the generation lifecycle.
 ---
 
 # Seedance Motion Recast
@@ -182,3 +168,13 @@ bundle or route per retry.
 - [ ] Post-audio route recorded, with lip-sync QA when someone speaks on screen
 - [ ] Source with a person bound as an `asset://` video; route probes recorded for any new case
 - [ ] Ladder rung stated: key-beat 480p probe, full-duration 480p, or final
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->

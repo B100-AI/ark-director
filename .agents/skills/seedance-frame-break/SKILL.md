@@ -1,17 +1,6 @@
 ---
 name: seedance-frame-break
-description: >-
-  Write and QA Seedance 2.5 prompts for the frame-break pop-out effect (3D
-  billboard look): two solid black bars at the top and bottom of a 16:9 frame
-  with the subject's nearest limbs or clothing drawn in front of the bars in
-  full colour, so the subject bursts toward the viewer. Covers the three-layer
-  prompt contract, four timed stages with observable End states, a fixed
-  camera, scenic backdrops, a product-hero variant, failure repairs and a
-  frame-based pixel check of bar thickness and overlap. Use for pop-out,
-  frame-break, 3D billboard, a character bursting out of black bars, or a
-  product hero ad whose product breaks the frame. Not for ordinary cinematic
-  letterbox, general camera moves (seedance-camera-presets), the base prompt
-  grammar (seedance-prompt-25), edits to existing footage, or task submission.
+description: 'Write and QA Seedance 2.5 prompts for the frame-break pop-out effect (3D billboard look): two solid black bars at the top and bottom of a 16:9 frame with the subject''s nearest limbs or clothing drawn in front of the bars in full colour, so the subject bursts toward the viewer. Covers the three-layer prompt contract, four timed stages with observable End states, a fixed camera, scenic backdrops, a product-hero variant, failure repairs and a frame-based pixel check of bar thickness and overlap. Use for pop-out, frame-break, 3D billboard, a character bursting out of black bars, or a product hero ad whose product breaks the frame. Not for ordinary cinematic letterbox, general camera moves (seedance-camera-presets), the base prompt grammar (seedance-prompt-25), edits to existing footage, or task submission.'
 ---
 
 # Seedance Frame Break
@@ -264,3 +253,13 @@ This declaration is not validation by the script. See the
 uv run python .agents/skills/seedance-frame-break/scripts/measure_frame_break.py take.mp4 --summary-only --output take_measure.json
 uv run python -m unittest tests.test_frame_break_measure -v
 ```
+
+<!-- ark-library-contract:start -->
+## Ark library contract
+
+This skill builds prompts or submits Seedance / Seedream / Seed Audio tasks. Follow `${CLAUDE_PLUGIN_ROOT}/contracts/ark-library.md` (live library `$HOME/mnt/EVC-AI/ark-library`, tool `arklib.py`, read-only snapshot `${CLAUDE_PLUGIN_ROOT}/library/`):
+- Before submitting: `arklib.py constraints` (platform limits, owner rules) and, for any spoken line, `arklib.py lookup`.
+- When a task is rejected or a take fails: `arklib.py match "<symptom>"` first, use the method that worked before.
+- Approved fixes are logged with `add-fix` / `media-add`; the run ends with `close-run`.
+- Never edit the database, lexicon or any copy by hand.
+<!-- ark-library-contract:end -->
